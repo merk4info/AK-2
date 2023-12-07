@@ -1,0 +1,6 @@
+.idea/
+
+/kbuild
+
+/part1/*
+!/part1/hello.c
