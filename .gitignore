@@ -4,3 +4,5 @@
 
 /part1/*
 !/part1/hello.c
+
+*.o.d

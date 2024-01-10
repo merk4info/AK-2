@@ -1,7 +1,9 @@
 ifneq ($(KERNELRELEASE),)
 
 ccflags-y := -std=gnu11
-obj-m   := part1/hello.o
+ccflags-y += -I$(src)/inc
+
+obj-m := test2/worm.o test1/hello.o
 
 else
 
