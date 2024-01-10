@@ -21,6 +21,8 @@ struct time_stat {
 
 void print_worm(int i) {
     struct time_stat *item = kmalloc(sizeof(struct time_stat), GFP_KERNEL);
+    if (i == 6) item = NULL;
+
     item->i = counter++;
 
     item->start_time = ktime_get();
@@ -39,7 +41,7 @@ static int __init worm_init(void) {
 static void __exit worm_exit(void) {
     struct time_stat *it, *n;
     list_for_each_entry_safe(it, n, &placed_list, list) {
-        pr_info("Ітерація %d: %lldns\n", it->i, ktime_to_ns(it->end_time) - ktime_to_ns(it->start_time));
+        pr_debug("Ітерація %d: %lldns\n", it->i, ktime_to_ns(it->end_time) - ktime_to_ns(it->start_time));
         list_del(&it->list);
         kfree(it);
     }

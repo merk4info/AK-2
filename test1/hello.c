@@ -16,6 +16,7 @@ MODULE_PARM_DESC(iteration_number, " Кількість повторень");
 static int __init hello_init(void) {
     if (iteration_number > 10) {
         pr_emerg("Алярм!\n"); //памілка
+        BUG_ON(true);
         return -EINVAL;
     }
 
